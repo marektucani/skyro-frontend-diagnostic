@@ -23,6 +23,8 @@ Otvoriť môžeš adresu, ktorú vypíše terminál. Projekt používa Vue 3, Vi
 
 Podľa obrázka [`reference/product-card-reference.png`](reference/product-card-reference.png) vytvor produktovú kartu pre bezdrôtové slúchadlá. Snaž sa rozloženie, medzery, typografiu, farby, okraje a zarovnanie napodobniť čo najrozumnejšie. Nemusí ísť o úplne pixelovo presnú kópiu.
 
+Pri kliknutí na tlačidlo „Pridať do košíka“ odošli `POST` request na endpoint `/api/cart` s údajmi o produkte a množstve. Endpoint je pripravený priamo vo Vite dev serveri, po približne 2 sekundách zámerne vráti chybu `500`. Používateľ musí počas requestu vidieť loading stav a po zlyhaní zrozumiteľnú chybovú správu.
+
 Pripravené súbory:
 
 - `src/data/product.js` obsahuje údaje o produkte,
@@ -39,6 +41,8 @@ Pripravené súbory:
 - [ ] Tlačidlo `+` zvýši quantity o 1.
 - [ ] Tlačidlo `−` zníži quantity o 1, ale nikdy nie pod hodnotu `1`.
 - [ ] Ovládací prvok so srdcom prepína favourite medzi aktívnym a neaktívnym stavom. Zmena musí byť vo vzhľade viditeľná.
+- [ ] Tlačidlo „Pridať do košíka“ odošle `POST` request na `/api/cart` s `productId` a `quantity`.
+- [ ] Počas odosielania je tlačidlo v loading stave a po chybe `500` sa zobrazí používateľská chybová správa.
 - [ ] Rozhranie správne reaguje na všetky zmeny stavu.
 - [ ] V konzole prehliadača nie sú žiadne chyby.
 - [ ] Hotové riešenie je uložené v Git commite.
