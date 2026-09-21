@@ -1,7 +1,9 @@
-# Referenčný dizajn
+# Referenčné sketche
 
-Súbor `product-card-reference.png` je vizuálna predloha pre zadanie. Študent má podľa nej vytvoriť produktovú kartu vo Vue.
+Vizuálne predlohy pre jednotlivé fázy sú zámerne low-fi sketchy. Ukazujú hierarchiu, približné rozloženie a dôležité prvky, ale nie sú pixel-perfect špecifikáciou.
 
-Referenčný obrázok ukazuje cieľové rozloženie na širšej obrazovke. Responzívne správanie je bonus a jeho konkrétne riešenie je ponechané na študentovi.
+- `phases/01-layout/design/product-card-sketch.png`
+- `phases/02-interaction/design/product-cards-active-sketch.png`
+- `phases/03-cart-api/design/product-grid-cart-sketch.png`
 
-Zdrojová HTML/CSS implementácia predlohy zámerne nie je v repozitári. Pri práci používaj referenčný PNG obrázok.
+Konkrétne farby, spacing, responzivitu a detaily implementácie rozumne interpretuj podľa zadania.

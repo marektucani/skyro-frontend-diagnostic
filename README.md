@@ -1,80 +1,109 @@
-# Vstupné zadanie – Frontend
+# Frontend diagnostické zadanie
 
 ## Kontext
 
-Toto zadanie slúži na zistenie, ako momentálne pristupuješ k tvorbe frontendu. Nejde najmä o to, aby bolo všetko úplne dokonalé. Dôležité je ukázať, čo vieš samostatne vytvoriť, ako premýšľaš nad požiadavkami a ako píšeš kód.
+Toto zadanie slúži na praktické overenie práce s Vue a frontendovým rozhraním. Nehodnotí sa iba výsledný screenshot, ale aj spôsob uvažovania, kvalita implementácie a schopnosť vysvetliť a upraviť vlastný kód.
 
-## Čas
+Všetky tri fázy zadania sú známe od začiatku. Implementuj ich postupne a po každej fáze absolvuj krátke 1:1 review.
 
-90 minút
+## Technológie a spustenie
 
-## Spustenie projektu
-
-V termináli v priečinku projektu spusti:
+Projekt používa Vue 3, Vite a JavaScript.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Otvoriť môžeš adresu, ktorú vypíše terminál. Projekt používa Vue 3, Vite, JavaScript, Composition API a `<script setup>`.
+## Čas
 
-## Zadanie
+Na celé zadanie máš približne 90 minút. Nemusíš dokončiť všetko. Funkčné a zrozumiteľné riešenie je hodnotnejšie než množstvo nedokončených detailov.
 
-Podľa obrázka [`reference/product-card-reference.png`](reference/product-card-reference.png) vytvor produktovú kartu pre bezdrôtové slúchadlá. Snaž sa rozloženie, medzery, typografiu, farby, okraje a zarovnanie napodobniť čo najrozumnejšie. Nemusí ísť o úplne pixelovo presnú kópiu.
+## Fáza 1 – layout a vizuál
 
-Pri kliknutí na tlačidlo „Pridať do košíka“ odošli `POST` request na endpoint `/api/cart` s údajmi o produkte a množstve. Endpoint je pripravený priamo vo Vite dev serveri, po približne 2 sekundách zámerne vráti chybu `500`. Používateľ musí počas requestu vidieť loading stav a po zlyhaní zrozumiteľnú chybovú správu.
+Detailné zadanie a low-fi referenčný sketch sú v [`phases/01-layout/README.md`](phases/01-layout/README.md).
 
-Pripravené súbory:
+Vytvor základnú produktovú kartu pre bezdrôtové slúchadlá:
 
-- `src/data/product.js` obsahuje údaje o produkte,
-- `public/product-headphones.png` je obrázok produktu,
-- `src/components/ProductCard.vue` je miesto pre tvoju implementáciu,
-- `src/App.vue` je minimálny vstupný komponent aplikácie.
+- použi údaje zo `src/data/product.js`,
+- kartu navrhni tak, aby sa dala použiť pre iný produkt bez prepisovania jej obsahu,
+- zobraz produktový obrázok, kategóriu, názov, popis, cenu a dostupnosť,
+- rozumne interpretuj layout, spacing, typografiu, farby a proporcie sketchu,
+- hodnoty produktu nevpisuj priamo do template,
+- aplikácia nesmie mať chyby v konzole.
 
-## Povinné požiadavky
+Referenčný obrázok je iba orientačný mockup. Neočakáva sa pixel-perfect kópia.
 
-- [ ] Vzhľad karty sa rozumne podobá na referenčný dizajn.
-- [ ] Produktová karta je vytvorená ako znovupoužiteľný Vue komponent.
-- [ ] Informácie o produkte komponent prijíma cez props. Hodnoty produktu nesmú byť všetky napísané priamo v template.
-- [ ] Quantity je reaktívny stav a na začiatku má hodnotu `1`.
-- [ ] Tlačidlo `+` zvýši quantity o 1.
-- [ ] Tlačidlo `−` zníži quantity o 1, ale nikdy nie pod hodnotu `1`.
-- [ ] Ovládací prvok so srdcom prepína favourite medzi aktívnym a neaktívnym stavom. Zmena musí byť vo vzhľade viditeľná.
-- [ ] Tlačidlo „Pridať do košíka“ odošle `POST` request na `/api/cart` s `productId` a `quantity`.
-- [ ] Počas odosielania je tlačidlo v loading stave a po chybe `500` sa zobrazí používateľská chybová správa.
-- [ ] Rozhranie správne reaguje na všetky zmeny stavu.
-- [ ] V konzole prehliadača nie sú žiadne chyby.
-- [ ] Hotové riešenie je uložené v Git commite.
+## Fáza 2 – interakcie
 
-## Bonus
+Detailné zadanie a sketch aktívneho stavu sú v [`phases/02-interaction/README.md`](phases/02-interaction/README.md).
 
-Bonusové úlohy rieš až po dokončení povinných požiadaviek. Nie sú potrebné na dobré základné riešenie.
+Rozšír aplikáciu na tri produktové karty z `src/data/products.js` a doplň:
 
-- [ ] Maximálna quantity je `9` a tlačidlo `+` je na maxime deaktivované.
-- [ ] Karta sa rozumne prispôsobí menšej obrazovke.
-- [ ] Ovládanie je prístupné a použiteľné aj pomocou klávesnice.
-- [ ] HTML používa vhodné sémantické prvky.
-- [ ] Text tlačidla sa mení podľa quantity, napríklad `Pridať 3 ks do košíka`.
-- [ ] Riešenie je rozdelené do zmysluplných menších komponentov.
-- [ ] Z poľa produktov sa vykreslí viac produktových kariet.
-- [ ] Tam, kde je to vhodné, je použitý odvodený stav pomocou `computed`.
+- quantity so začiatočnou hodnotou `1`,
+- tlačidlo `+`, ktoré zvýši quantity o `1`,
+- tlačidlo `−`, ktoré quantity nezníži pod `1`,
+- maximum quantity `9` a deaktiváciu `+` na maxime,
+- favourite toggle s viditeľnou zmenou vzhľadu,
+- text tlačidla „Pridať do košíka“, ktorý zodpovedá aktuálnej quantity,
+- každá karta sa musí správať nezávisle,
+- použiteľnosť pomocou klávesnice a zrozumiteľnosť pre asistenčné technológie.
 
-## Odovzdanie
+## Fáza 3 – lokálny košík a API
 
-1. Dokonči implementáciu v rozsahu, ktorý stihneš.
-2. Skontroluj aplikáciu a konzolu prehliadača.
-3. Ulož svoju prácu do Gitu so zmysluplnou správou, napríklad:
+Detailné zadanie a finálny sketch sú v [`phases/03-cart-api/README.md`](phases/03-cart-api/README.md).
 
-```bash
-git add .
-git commit -m "Complete frontend diagnostic task"
+Rozšír existujúce produktové karty tak, aby:
+
+- tlačidlo „Pridať do košíka“ zmenilo lokálny obsah košíka bez volania API,
+- košík sa zobrazil nad kartami iba vtedy, keď nie je prázdny,
+- košík zobrazoval produkty, množstvá a celkovú cenu,
+- košík obsahoval tlačidlo „Odoslať objednávku“.
+
+Pri odoslaní košíka vykonaj:
+
+```http
+POST /api/cart
+Content-Type: application/json
 ```
 
-Nie je potrebné vytvárať ďalšie branche.
+Payload má mať tvar:
 
-## Pomoc a internet
+```json
+{
+  "items": [
+    { "productId": 1, "quantity": 2 },
+    { "productId": 3, "quantity": 1 }
+  ]
+}
+```
 
-Dokumentáciu alebo internet používaj tak, ako by si ich bežne použil pri práci. Ak sa na niečom zasekneš, pokračuj inou časťou a urob to, čo dokážeš. Nedokončené riešenie je v poriadku. Funkčný a zrozumiteľný kód je hodnotnejší než snaha dokončiť za každú cenu všetko.
+Lokálny endpoint po približne 2 sekundách zámerne vráti `500`. Počas requestu zobraz loading, zabráň opakovanému odoslaniu, zobraz zrozumiteľnú chybu a pri chybe zachovaj obsah košíka. Chyba nesmie zostať ako neošetrený error v konzole.
 
-Ak použiješ AI, musíš vedieť vysvetliť každú časť kódu, ktorú odovzdáš.
+## 1:1 review po každej fáze
+
+Po dokončení každej fázy si priprav krátke vysvetlenie:
+
+- čo si implementoval a prečo,
+- kde aplikácia uchováva údaje, ktoré sa menia, a prečo,
+- ako sa informácie prenášajú medzi časťami aplikácie,
+- čo by si ďalej refaktoroval alebo zlepšil.
+
+Počas review môžeš dostať doplňujúcu otázku alebo malú live zmenu existujúceho riešenia.
+
+## Git workflow
+
+Pracuj vo vlastnej branchi a fázy odovzdávaj samostatnými commitmi:
+
+```bash
+git checkout -b candidate/your-name
+git add .
+git commit -m "Complete phase 1"
+git push -u origin candidate/your-name
+```
+
+Po každej fáze udržuj aplikáciu spustiteľnú a commit správu zrozumiteľnú.
+
+## Pomoc a AI
+
+Dokumentáciu, internet alebo AI používaj tak, ako by si ich bežne použil pri práci. Ak použiješ AI, musíš vedieť vysvetliť každú časť kódu, ktorú odovzdáš.

@@ -1,5 +1,5 @@
 <script setup>
-// TODO: Vytvor props a reaktívny stav potrebný pre produktovú kartu.
+// TODO: Implementuj produktovú kartu.
 </script>
 
 <template>
@@ -9,4 +9,3 @@
 <style scoped>
 /* TODO: Doplň štýly produktovej karty. */
 </style>
-

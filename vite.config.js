@@ -24,8 +24,6 @@ function cartApiMock() {
         request.on('end', async () => {
           await new Promise((resolve) => setTimeout(resolve, MOCK_API_DELAY))
 
-          // The body is intentionally read so the endpoint behaves like a real API.
-          // The request is still designed to fail so students can implement error handling.
           void requestBody
 
           response.statusCode = 500
