@@ -4,7 +4,7 @@
 
 Toto zadanie slúži na praktické overenie práce s Vue a frontendovým rozhraním. Nehodnotí sa iba výsledný screenshot, ale aj spôsob uvažovania, kvalita implementácie a schopnosť vysvetliť a upraviť vlastný kód.
 
-Všetky tri fázy zadania sú známe od začiatku. Implementuj ich postupne a po každej fáze absolvuj krátke 1:1 review.
+Všetky štyri fázy zadania sú známe od začiatku. Implementuj ich postupne a po každej fáze absolvuj krátke 1:1 review.
 
 ## Technológie a spustenie
 
@@ -79,6 +79,21 @@ Payload má mať tvar:
 ```
 
 Lokálny endpoint po približne 2 sekundách zámerne vráti `500`. Počas requestu zobraz loading, zabráň opakovanému odoslaniu, zobraz zrozumiteľnú chybu a pri chybe zachovaj obsah košíka. Chyba nesmie zostať ako neošetrený error v konzole.
+
+## Fáza 4 – správa košíka a potvrdenie objednávky
+
+Detailné zadanie a referenčný sketch sú v [`phases/04-order-confirmation/README.md`](phases/04-order-confirmation/README.md).
+
+Rozšír košík tak, aby:
+
+- opakované pridanie rovnakého produktu upravilo existujúcu položku namiesto vytvorenia duplicity,
+- používateľ vedel pri každej položke zmeniť množstvo alebo ju odstrániť,
+- celková cena vždy zodpovedala obsahu košíka,
+- prázdny košík sa opäť skryl,
+- úspešné odoslanie objednávky vyčistilo košík a zobrazilo potvrdenie s číslom objednávky,
+- tlačidlo „Pokračovať v nákupe“ zatvorilo potvrdenie a zobrazilo produkty.
+
+Pre úspešné odoslanie použi `POST /api/orders`. Endpoint po krátkom oneskorení vracia `201` a `orderId`.
 
 ## 1:1 review po každej fáze
 
