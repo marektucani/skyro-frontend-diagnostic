@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 
 const MOCK_API_DELAY = 2000
@@ -42,5 +43,9 @@ function cartApiMock() {
 }
 
 export default defineConfig({
-  plugins: [vue(), cartApiMock()],
+  plugins: [
+    vue(), 
+    cartApiMock(),
+    tailwindcss(),
+  ],
 })
