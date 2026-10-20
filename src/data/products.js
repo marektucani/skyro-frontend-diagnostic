@@ -8,6 +8,8 @@ export const products = [
     name: 'Sony ULT Wear',
     price: 199,
     originalPrice: 229,
+    image: '/product-headphones.png',
+
   },
   {
     ...product,
@@ -15,5 +17,6 @@ export const products = [
     name: 'Sony WH-CH720N',
     price: 119,
     originalPrice: 149,
+      image: '/product-headphones.png',
   },
 ]
